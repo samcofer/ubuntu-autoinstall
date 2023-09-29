@@ -1,0 +1,42 @@
+#cloud-config
+autoinstall:
+  identity:
+    hostname: sillyserver
+    password: $6$HZ/Bi7zHfcmukLhW$x0Z.ev8I/VLpvKJUwDp0GeB8s3wC91E4ey4YzcVejT5sLh8Pb9cku54iEMPo0nFHVPPj2qr9ZukecxYfRMNVd0
+    realname: Sam Cofer
+    username: samcofer
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    ethernets:
+      ens160:
+        addresses:
+        - 10.10.10.81/24
+        nameservers:
+          addresses:
+          - 10.10.10.23
+          search: []
+        routes:
+        - to: default
+          via: 10.10.10.1
+    version: 2
+  ssh:
+    allow-pw: true
+    authorized-keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrndD4qHoRoP7AAOnUCpQVoKK5KoFId4yTMPjGd40jqi1giDjQEZvHmb+V11pJbSu1msUIuS0R4ifnHSa2rYkgqGVt+o/WRYW9n22mZ9fQtaBHXVWRPeYJ5EiKq32e+oR10YMr/WPil77ndSm80xBg4gCicIEvaFE0/DlKWB8Qg2Uih5ILXqRmoxCIeogEGifPN81rXJU01e+F5RwAic6bV12kb+zr4Yam8fsh5ipIM5zzxuikSA2ogAU0tS5ggZLOs3t1xBJrXyy46BNEIBi5eobdZZs9yhDXCTd/VNKCp6W35ZSnzLrpSkrLKssCGHqdQjkT1ayMeW8v1Nwo2RoX5/0Jx+RkbPCvzbOS0bwVAluJ4nBONVawPJg7iqe6cWG8DAeocIlFnPlIkdYz7clOb2iR3gup3fsEXeiqA4RphFJ4PYVe1eVF4xVLY51jGBZOI7Fn7gHIy4Uq1lrv2ZvN/aPAhRAXr9cL6un0czQ6CWm1zUGGl11Bur4GA8fC5Wc=
+      samcofer@github/88401982 # ssh-import-id gh:samcofer'
+    install-server: true
+  updates: security
+  version: 1
+  shutdown: reboot
+  late-commands:
+    - shutdown -h now
+  user-data:
+    timezone: America/Chicago
+    power_state:
+      mode: poweroff
