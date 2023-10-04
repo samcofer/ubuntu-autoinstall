@@ -55,5 +55,5 @@ autoinstall:
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWULLs8BV4ckFA6Bcov6lvYz7GQEml46HHDMPLzhQd3dw/OpwwVwdXMwIwV4wvqvjXmI6D+Hs6Ez6fmDYEMkPp8dWfHPPUm73DAdHQzD3IFd4XJBW7Od2ejgPekR2irYOfxG9GGqp39kQfUC9W1Sxvg/wh2EUg97iZHx28vVxB2WUxeD7vvQ3JKfyU7f4MdER60P14BdvO39lgYgAQQKEF7A0tRXp4TlwkKUwPvqe72Rkd57DTcuOAknGzmlu0QyvQL+co5tW51AGK6/8LlaN284q+VoCFXulTj1asGXGp/cVX2g2/2LNPthl7ZfiMJRvBXZjNZvxrtBg5sQuXFlid6RiTscnFaMia6MM44oOV/yq3tyRkoc8jhOO1dRSZX7gQiob83kxYqtGoI1u2VPAmO3aOTuLW2UbuEKw9P3TI9dtiOiGcBJnyiHNry7oy7SNEtnZVmsUuyg9mW/os9YaU4kcAjotUMmKRgHH2C2457KTTnxhwxYmAErriTyekmc8= samcofer@Sam-WorkLaptop"
       sudo: ALL=(ALL) NOPASSWD:ALL
     power_state:
-	mode: poweroff
+      mode: poweroff
       
