@@ -40,7 +40,7 @@ autoinstall:
     - echo "Ubuntu 22.04 LTS \nIP - $(hostname -I)\n" > /target/etc/issue
     # storage was a pain in the ass and merged multiple things, I just want a 100% use of the fs. (alt option: https://gist.github.com/anedward01/b68e00bb2dcfa4f1335cd4590cbc8484#file-user-data-L97-L199)
     - curtin in-target --target=/target -- lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
-    - curtin in-target --target=/target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--l)
+    - curtin in-target --target=/target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--l
     - for i in {61..69}; do ip="10.10.10.$i"; ping -c 1 -W 1 $ip &>/dev/null ||  { export MYIP="$ip/24"; break; }; done
     - echo $MYIP
     - sed -i "s=10.10.10.71/24=$MYIP=g" /etc/netplan/00-installer-config.yaml
