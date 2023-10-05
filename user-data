@@ -41,6 +41,8 @@ autoinstall:
     # storage was a pain in the ass and merged multiple things, I just want a 100% use of the fs. (alt option: https://gist.github.com/anedward01/b68e00bb2dcfa4f1335cd4590cbc8484#file-user-data-L97-L199)
     - curtin in-target --target=/target -- lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
     - curtin in-target --target=/target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+    - sed -i s]10.10.10.81/24]$(for i in {80..89}; do ip="10.10.10.$i"; ping -c 1 -W 1 $ip &>/dev/null ||  { echo "$ip/24"; break; }; done)]g /etc/netplan/00-installer-config.yaml
+    - netplan apply
     - shutdown -h now
   user-data:
     timezone: America/Chicago
@@ -48,7 +50,6 @@ autoinstall:
     - name: ansible
       primary_group: ansible
       groups: sudo
-      
       shell: /bin/bash
       lock-passwd: true
       ssh_authorized_keys:
