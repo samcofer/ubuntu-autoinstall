@@ -43,7 +43,7 @@ autoinstall:
     - curtin in-target --target=/target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
     - curl -o /root/ip_config.sh https://raw.githubusercontent.com/samcofer/ubuntu-autoinstall/main/ip_config.sh
     - chmod 744 /root/ip_config.sh
-    - /root/ip_config.sh
+    - /root/ip_config.sh > /var/log/installer/ip_config.log
     - shutdown -h now
   user-data:
     timezone: America/Chicago
