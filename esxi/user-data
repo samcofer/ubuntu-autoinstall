@@ -14,7 +14,7 @@ autoinstall:
   locale: en_US.UTF-8
   network:
     ethernets:
-      eno1:
+      ens160:
         addresses:
         - 10.10.10.71/24
         nameservers:
