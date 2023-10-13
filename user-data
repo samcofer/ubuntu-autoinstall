@@ -65,6 +65,8 @@ autoinstall:
       - /root/python.sh > /root/python.log
       - echo 'export HISTTIMEFORMAT="%F %T "' > /etc/profile.d/history_time.sh
       - chmod 744 /etc/profile.d/history_time.sh
+      - echo GRUB_CMDLINE_LINUX="fbcon=rotate:2" >> /etc/default/grub
+      - update-grub
     users:
     - name: ansible
       primary_group: ansible
