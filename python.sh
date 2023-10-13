@@ -11,6 +11,6 @@ sudo gdebi -n python-${PYTHON_VERSION}_1_amd64.deb
 /opt/python/"${PYTHON_VERSION}"/bin/pip install --upgrade \
     pip setuptools wheel
 
-echo 'PATH=/opt/python/"${PYTHON_VERSION}"/bin:$PATH' > /etc/profile.d/python.sh
+echo "export PATH=/opt/python/${PYTHON_VERSION}/bin:\$PATH" > /etc/profile.d/python.sh
 
 rm -rf python-${PYTHON_VERSION}_1_amd64.deb
