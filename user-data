@@ -24,6 +24,16 @@ autoinstall:
         routes:
         - to: default
           via: 10.10.10.1
+      ens160:
+        addresses:
+          - 10.10.10.72/24
+        nameservers:
+          addresses:
+            - 10.10.10.23
+          search: [ ]
+        routes:
+          - to: default
+            via: 10.10.10.1
     version: 2
   ssh:
     allow-pw: true
