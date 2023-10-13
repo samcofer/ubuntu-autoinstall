@@ -53,8 +53,8 @@ autoinstall:
       - curl -o /root/python.sh https://raw.githubusercontent.com/samcofer/ubuntu-autoinstall/main/python.sh
       - chmod 744 /root/python.sh
       - /root/python.sh > /root/python.log
-      - echo 'export HISTTIMEFORMAT="%F %T "' > /target/etc/profile.d/history_time.sh
-      - chmod 744 /target/etc/profile.d/history_time.sh
+      - echo 'export HISTTIMEFORMAT="%F %T "' > /etc/profile.d/history_time.sh
+      - chmod 744 /etc/profile.d/history_time.sh
     users:
     - name: ansible
       primary_group: ansible
