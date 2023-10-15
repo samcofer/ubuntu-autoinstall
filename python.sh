@@ -20,7 +20,7 @@ rm -rf python-${PYTHON_VERSION}_1_amd64.deb
 # Automate the creation of a python venv for ansible user
 
 cat <<EOT >> /etc/profile.d/python.sh
-if [ "$(whoami)" != "ansible" ]; then
+if [ "$(whoami)" = "ansible" ]; then
 DIRECTORY=~/.venv
 if [ ! -d "$DIRECTORY" ]; then
   python -m venv ~/.venv
