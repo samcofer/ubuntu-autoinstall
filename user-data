@@ -68,6 +68,7 @@ autoinstall:
     users:
       - name: ansible
         primary_group: ansible
+        groups: sudo
         shell: /bin/bash
         lock-passwd: true
         ssh_authorized_keys:
