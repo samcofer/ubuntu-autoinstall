@@ -14,7 +14,9 @@ autoinstall:
   locale: en_US.UTF-8
   network:
     ethernets:
-      eno1:
+      eth:
+        match:
+          name: en*
         addresses:
         - 10.10.10.71/24
         nameservers:
@@ -24,16 +26,6 @@ autoinstall:
         routes:
         - to: default
           via: 10.10.10.1
-      ens160:
-        addresses:
-          - 10.10.10.72/24
-        nameservers:
-          addresses:
-            - 10.10.10.23
-          search: [ ]
-        routes:
-          - to: default
-            via: 10.10.10.1
     version: 2
   ssh:
     allow-pw: true
