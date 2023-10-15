@@ -18,8 +18,9 @@ rm -rf python-${PYTHON_VERSION}_1_amd64.deb
 # Ansible python pre-config
 
 # Automate the creation of a python venv for ansible user
-if [ "$(whoami)" != "ansible" ]; then
+
 cat <<EOT >> /etc/profile.d/python.sh
+if [ "$(whoami)" != "ansible" ]; then
 DIRECTORY=~/.venv
 if [ ! -d "$DIRECTORY" ]; then
   python -m venv ~/.venv
@@ -28,5 +29,5 @@ if [ ! -d "$DIRECTORY" ]; then
   pip install ansible
 fi
 echo "source ~/.venv/bin/activate" >> ~/.bashrc
-EOT
 fi
+EOT
