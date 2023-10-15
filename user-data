@@ -49,25 +49,30 @@ autoinstall:
   user-data:
     timezone: America/Chicago
     runcmd:
+      # Configure IP selection between 10.10.10.61-69
       - curl -o /root/ip_config.sh https://raw.githubusercontent.com/samcofer/ubuntu-autoinstall/main/ip_config.sh
       - chmod 744 /root/ip_config.sh
       - /root/ip_config.sh > /root/ip_config.log
+      # Install fixed python for Ansible which is a pre-req
       - curl -o /root/python.sh https://raw.githubusercontent.com/samcofer/ubuntu-autoinstall/main/python.sh
       - chmod 744 /root/python.sh
       - /root/python.sh > /root/python.log
+      # Set history time/date so that Ansible commands are captured
       - echo 'export HISTTIMEFORMAT="%F %T "' > /etc/profile.d/history_time.sh
       - chmod 744 /etc/profile.d/history_time.sh
+      # Rotate console
       - echo GRUB_CMDLINE_LINUX="fbcon=rotate:2" >> /etc/default/grub
       - update-grub
+      - sudo sed -i s/8x16/10x20/g /etc/default/console-setup
+      - sudo sed -i s/Fixed/Terminus/g /etc/default/console-setup
     users:
-    - name: ansible
-      primary_group: ansible
-      groups: sudo wheel
-      shell: /bin/bash
-      lock-passwd: true
-      ssh_authorized_keys:
-        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWULLs8BV4ckFA6Bcov6lvYz7GQEml46HHDMPLzhQd3dw/OpwwVwdXMwIwV4wvqvjXmI6D+Hs6Ez6fmDYEMkPp8dWfHPPUm73DAdHQzD3IFd4XJBW7Od2ejgPekR2irYOfxG9GGqp39kQfUC9W1Sxvg/wh2EUg97iZHx28vVxB2WUxeD7vvQ3JKfyU7f4MdER60P14BdvO39lgYgAQQKEF7A0tRXp4TlwkKUwPvqe72Rkd57DTcuOAknGzmlu0QyvQL+co5tW51AGK6/8LlaN284q+VoCFXulTj1asGXGp/cVX2g2/2LNPthl7ZfiMJRvBXZjNZvxrtBg5sQuXFlid6RiTscnFaMia6MM44oOV/yq3tyRkoc8jhOO1dRSZX7gQiob83kxYqtGoI1u2VPAmO3aOTuLW2UbuEKw9P3TI9dtiOiGcBJnyiHNry7oy7SNEtnZVmsUuyg9mW/os9YaU4kcAjotUMmKRgHH2C2457KTTnxhwxYmAErriTyekmc8= samcofer@Sam-WorkLaptop"
-      sudo: ALL=(ALL) NOPASSWD:ALL
+      - name: ansible
+        primary_group: ansible
+        shell: /bin/bash
+        lock-passwd: true
+        ssh_authorized_keys:
+          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWULLs8BV4ckFA6Bcov6lvYz7GQEml46HHDMPLzhQd3dw/OpwwVwdXMwIwV4wvqvjXmI6D+Hs6Ez6fmDYEMkPp8dWfHPPUm73DAdHQzD3IFd4XJBW7Od2ejgPekR2irYOfxG9GGqp39kQfUC9W1Sxvg/wh2EUg97iZHx28vVxB2WUxeD7vvQ3JKfyU7f4MdER60P14BdvO39lgYgAQQKEF7A0tRXp4TlwkKUwPvqe72Rkd57DTcuOAknGzmlu0QyvQL+co5tW51AGK6/8LlaN284q+VoCFXulTj1asGXGp/cVX2g2/2LNPthl7ZfiMJRvBXZjNZvxrtBg5sQuXFlid6RiTscnFaMia6MM44oOV/yq3tyRkoc8jhOO1dRSZX7gQiob83kxYqtGoI1u2VPAmO3aOTuLW2UbuEKw9P3TI9dtiOiGcBJnyiHNry7oy7SNEtnZVmsUuyg9mW/os9YaU4kcAjotUMmKRgHH2C2457KTTnxhwxYmAErriTyekmc8= samcofer@Sam-WorkLaptop"
+        sudo: ALL=(ALL) NOPASSWD:ALL
 #    power_state:
 #      mode: poweroff
       
