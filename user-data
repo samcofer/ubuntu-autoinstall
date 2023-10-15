@@ -66,6 +66,9 @@ autoinstall:
       - update-grub
       - sudo sed -i s/8x16/10x20/g /etc/default/console-setup
       - sudo sed -i s/Fixed/Terminus/g /etc/default/console-setup
+      # Update all packages
+      - apt update
+      - apt upgrade -y
       - reboot
     users:
       - name: ansible
