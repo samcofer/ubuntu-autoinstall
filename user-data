@@ -66,6 +66,7 @@ autoinstall:
       - update-grub
       - sudo sed -i s/8x16/10x20/g /etc/default/console-setup
       - sudo sed -i s/Fixed/Terminus/g /etc/default/console-setup
+      - reboot
     users:
       - name: ansible
         primary_group: ansible
