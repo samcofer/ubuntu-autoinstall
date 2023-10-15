@@ -14,3 +14,19 @@ sudo gdebi -n python-${PYTHON_VERSION}_1_amd64.deb
 echo "export PATH=/opt/python/${PYTHON_VERSION}/bin:\$PATH" > /etc/profile.d/python.sh
 
 rm -rf python-${PYTHON_VERSION}_1_amd64.deb
+
+# Ansible python pre-config
+
+# Automate the creation of a python venv for ansible user
+if [ "$(whoami)" != "ansible" ]; then
+cat <<EOT >> /etc/profile.d/python.sh
+DIRECTORY=~/.venv
+if [ ! -d "$DIRECTORY" ]; then
+  python -m venv ~/.venv
+  source ~/.venv/bin/activate
+  pip install --upgrade pip setuptools wheel
+  pip install ansible
+fi
+echo "source ~/.venv/bin/activate" >> ~/.bashrc
+EOT
+fi
