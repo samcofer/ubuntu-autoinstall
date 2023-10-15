@@ -61,6 +61,7 @@ autoinstall:
       - echo 'export HISTTIMEFORMAT="%F %T "' > /etc/profile.d/history_time.sh
       - chmod 744 /etc/profile.d/history_time.sh
       # Rotate console
+      - echo 2 | sudo tee /sys/class/graphics/fbcon/rotate_all
       - echo GRUB_CMDLINE_LINUX="fbcon=rotate:2" >> /etc/default/grub
       - update-grub
       - sudo sed -i s/8x16/10x20/g /etc/default/console-setup
