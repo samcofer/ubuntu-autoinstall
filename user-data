@@ -21,7 +21,8 @@ autoinstall:
         - 10.10.10.71/24
         nameservers:
           addresses:
-          - 10.10.10.23
+          - 10.10.10.62
+          - 10.10.10.63
           search: []
         routes:
         - to: default
